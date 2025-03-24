@@ -7,7 +7,9 @@ from payos import PayOS, ItemData, PaymentData
 
 load_dotenv()
 
-BASE_ANALYSIS_DIR =r'C:\Users\Cuong Do\Desktop\agritech\my_project\data'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_ANALYSIS_DIR = os.getenv("BASE_ANALYSIS_DIR") or os.path.join(BASE_DIR, 'data')
+# BASE_ANALYSIS_DIR =r'C:\Users\Cuong Do\Desktop\agritech\my_project\data'
 # PAYOS_CLIENT_ID = os.getenv("PAYOS_CLIENT_ID")
 # PAYOS_API_KEY = os.getenv("PAYOS_API_KEY")
 # PAYOS_CHECKSUM_KEY = os.getenv("PAYOS_CHECKSUM_KEY")

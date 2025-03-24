@@ -5,8 +5,11 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = r'C:\Users\Cuong Do\Desktop\agritech\my_project\static\uploads'
-app.config['CSV_FILE'] = r'C:\Users\Cuong Do\Desktop\agritech\my_project\data\analysis.csv'
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+app.config['UPLOAD_FOLDER'] = os.path.join(BASE_DIR, 'static', 'uploads')
+app.config['CSV_FILE'] = os.path.join(BASE_DIR, 'data', 'analysis.csv')
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # Ensure the upload directory exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)

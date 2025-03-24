@@ -19,7 +19,11 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 # Set the uploads folder (used when handling file uploads).
 # IMPORTANT: For serving static files, Flask uses the 'static' folder located relative to your app.
-app.config['UPLOAD_FOLDER'] = r'C:\Users\Cuong Do\Desktop\agritech\my_project\static\uploads'
+# Tự động lấy đường dẫn thư mục hiện tại, rồi trỏ tới static/uploads
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+app.config['UPLOAD_FOLDER'] = os.path.join(BASE_DIR, 'static', 'uploads')
+# ✔️ Đảm bảo thư mục tồn tại
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # Ensure that the UPLOAD_FOLDER exists.
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
